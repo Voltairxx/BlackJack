@@ -14,6 +14,25 @@ public class Deck {
 		}
 	}
 
+	public Card getCard(int i) {
+		return this.content[i];
+	}
+	
+	public void swap(int i, int j) {
+		Card c = this.getCard(i);
+		this.content[i] = this.content[j];
+		this.content[j] = c;
+	}
+	
+	public void shuffle() {
+		for(int i= 0; i < 50; i++) {
+			this.swap(Blackjack.getRandomNb(52),
+			Blackjack.getRandomNb(52));
+		}
+		
+		
+	}
+	
 	@Override
 	public String toString() {
 		String result = "";
