@@ -1,46 +1,52 @@
+import java.util.ArrayList;
 
 public class Deck {
-	private Card[] content;
-	
+	private ArrayList<Card> content = new ArrayList<Card>();
 	public Deck() {
-		this.content = new Card[52];
-		
-		int nbCartes = 0;
-		for (int j = 0; j <= 3; j++) {
-			for (int i=1; i <= 13; i++) {
-				this.content[nbCartes]= new Card (j,i);
-				nbCartes++;
+		for (int t = 0; t>=0 && t<4; t++) {
+			for (int g = 1; g>=0 && g<=13; g++) {
+				content.add(new Card(t,g));
 			}
 		}
 	}
-
+	
 	public Card getCard(int i) {
-		return this.content[i];
-	}
-	
-	public void swap(int i, int j) {
-		Card c = this.getCard(i);
-		this.content[i] = this.content[j];
-		this.content[j] = c;
-	}
-	
-	public void shuffle() {
-		for(int i= 0; i < 50; i++) {
-			this.swap(Blackjack.getRandomNb(52),
-			Blackjack.getRandomNb(52));
-		}
-		
-		
+		return content.get(i);  
 	}
 	
 	@Override
 	public String toString() {
 		String result = "";
-		for(int i = 0; i < this.content.length; i++) {
-			Card c = this.content[i];
+		for (int i = 0;i < content.size(); i++) {
+			Card c = content.get(i);
 			result += c.toString();
 			result += ",";
 		}
-		return result;
+		return result;	
+	}
+	
+	public void swap(int i, int j) {
+		Card c = this.getCard(i);
+		content.set(i,content.get(j));
+		content.set(j, c);	
+	}
+	
+	public void shuffle() {
+		for (int i =0; i<50; i++) {
+			this.swap(Blackjack.getrandom(52), Blackjack.getrandom(52));
+		}
+	}
+	
+	public Card draw() {
+		if (content.size() == 0) {
+			return null;
+		}
+		else {
+			Card c = content.get(0);
+			content.remove(0);
+			return c;
+		}
 	}
 }
+
+
