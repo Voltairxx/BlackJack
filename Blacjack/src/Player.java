@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Player {
-	private String name;
-	private int money;
-	private ArrayList<Card> hand = new ArrayList<Card>();
+	public String Name;
+	public int Money;
+	public ArrayList<Card> hand = new ArrayList<Card>();
 	
 	public Player(String n, int m) {
-		name = n;
-		money = m;
+		Name = n;
+		Money = m;
 	}
 	
 	public int getValue() {
@@ -19,10 +19,10 @@ public class Player {
 	}
 	
 	public void addMoney(int m) {
-		money += m;
+		Money += m;
 	}
 	
 	public void subMoney(int m) {
-		money -= m;
+		Money -= m;
 	}
 }
