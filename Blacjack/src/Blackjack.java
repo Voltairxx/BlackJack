@@ -38,28 +38,28 @@ public class Blackjack {
 		player.addCard(pioche.draw());
 		banque.addCard(pioche.draw());
 		banque.addCard(pioche.draw());
-		System.out.println("Bonjour " + username + " la partie va commencer !");
-		System.out.println("Pour rappel vous commence avec une somme total de 1000 euros.");
+		System.out.println("Bonjour " + username + " la partie va commencer ! \n");
+		System.out.println("Pour rappel vous commence avec une somme total de 1000 euros. \n");
 		int Mise;
 		do {
 			try {
 				System.out.println("Combien voulez-vous misez ?");
 				Mise = Integer.valueOf(myScanner.nextLine());
 			} catch (Exception e) {
-				System.err.println("Vous avez entré autre chose qu'un entier !!!");
+				System.err.println("Vous avez entre autre chose qu'un entier !!!");
 				Mise = 0;
 			}
 		}
 		while(Mise <= 0);
-		System.out.println("Votre mise est de : " + Mise + " euros.");
+		System.out.println("Votre mise est de : " + Mise + " euros. \n");
 		player.subMoney(Mise);
-		System.out.println("Il vous reste : " + player.Money + " euros.");
+		System.out.println("Il vous reste : " + player.Money + " euros. \n");
 		System.out.println("Voici vos cartes : " + player.hand);	
-		System.out.println("Voici les carte de la banque : " + banque.hand);
+		System.out.println("Voici les carte de la banque : " + banque.hand + "\n");
 		String reponse;
 		do {
-			System.out.println("Votre main contient : " + player.getValue() + " points.");
-			System.out.println("Voulez-vous piocher une carte ? oui = o  non = n");
+			System.out.println("Votre main contient : " + player.getValue() + " points. \n");
+			System.out.println("Voulez-vous piocher une carte ?  \n oui = o  \n non = n");
 			reponse = myScanner.nextLine();
 			if (reponse.equals("o")){
 				player.addCard(pioche.draw());
@@ -69,7 +69,7 @@ public class Blackjack {
 		while (reponse.equals("o") && player.getValue() < 22);
 		if (player.getValue() > 22) {
 			System.out.println("Vous avez perdu !");
-			System.out.println("Votre main était de : " + player.getValue() + " points.");
+			System.out.println("Votre main etait de : " + player.getValue() + " points.");
 		}
 		else if(player.getValue() > 21) {
 			System.out.println("BlackJack !!!!!!");
@@ -84,6 +84,15 @@ public class Blackjack {
 			}
 			while (banque.getValue() < 17);
 			System.out.println("La main de la banque contient : " + banque.getValue() + " points.");
+		}
+		if(player.getValue() == banque.getValue()) {
+			System.out.println("Egalite");
+		}
+		else if((player.getValue() <= 21 && banque.getValue() < player.getValue() || banque.getValue() > 21)) {
+			System.out.println("Vous avez gagne(e) !!!");
+		}
+		else {
+			System.out.println("Vous avez perdu(e) !!!");
 		}
 	}
 }
