@@ -56,6 +56,8 @@ public class Blackjack {
 		}
 		while (reponse.equals("o"));
 		
+		System.out.println(player.getValue());
+		
 		
 	}
 

@@ -11,7 +11,13 @@ public class Player {
 	}
 	
 	public int getValue() {
-		return 0;
+		int points = 0;
+		for(int i=0; i < this.hand.size(); i++) {
+			Card c = this.hand.get(i);
+			points += c.getPoints();
+		}
+		return points;
+		
 	}
 	
 	public void addCard(Card c) {

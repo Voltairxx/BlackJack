@@ -10,6 +10,18 @@ public class Card {
 		if (color == 3) {this.color = 'C';}
 	}
 	
+	public int valeurCartes () {
+		return this.value;
+	}
+	
+	public int getPoints() {
+		int result = this.value;
+		if(this.value > 10) {
+			result = 10;
+		}
+		return result;
+	}
+	
 	
 	@Override
 	public String toString() {
